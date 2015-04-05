@@ -1,0 +1,26 @@
+<h1>Ranking</h1>
+<table>
+  <thead>
+    <tr>
+    	<th>Rank</th>
+    	<th>Player</th>
+      	<th>Player' s avatar</th>
+      	<th>Points</th>
+    </tr>
+   </thead>
+
+   <tbody>
+	   <tr>
+	   	   
+	   	   <% i = 0%>
+		   <% @rank.each do |key, value| %>
+		   <th><%= i+=1 %></th>
+		      <th><%= "#{@players.find(key).first_name} #{@players.find(key).last_name}" %></th>
+		      <th><%= image_tag @players.find(key).avatar.url(:thumb) %></th>
+		      <th><%= value %></th>
+		      
+	    </tr>
+	    <% end %>
+    </tbody>
+  </table>
+

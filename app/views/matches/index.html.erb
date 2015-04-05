@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Matches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Winner name</th>
+      <th>Winner avatar</th>
+      <th>Loser name</th>
+      <th>Loser avatar</th>
+      <th>Match date</th>
+      <th>Winner score</th>
+      <th>Loser score</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matches.each do |match| %>
+      <tr>
+        <td><%= "#{@winner_first = Player.find(match.winner).first_name}  #{Player.find(match.winner).last_name}" %></td>
+        <td><%= image_tag Player.find(match.winner).avatar.url(:thumb) %></td>
+        <td><%= "#{Player.find(match.loser).first_name}  #{Player.find(match.loser).last_name}" %></td>
+        <td><%= image_tag Player.find(match.loser).avatar.url(:thumb) %></td>
+        <td><%= match.match_date %></td>
+        <td>10</td>
+        <td><%= match.loser_score %></td>
+        <td><%= link_to 'Show', match %></td>
+        <td><%= link_to 'Edit', edit_match_path(match) %></td>
+        <td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Match', new_match_path %>
