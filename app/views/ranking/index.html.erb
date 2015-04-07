@@ -1,4 +1,22 @@
-<h1>Ranking</h1>
+
+ <div class= "row">
+
+     <div class = "col-md-4">
+        <a class= "btn-primary btn-lg btn-block" href=http://localhost:3000/matches >Matches</a>
+	</div>
+	<div class = "col-md-4">
+		<div class = "well">
+			<h2>Ranking</h2>
+		</div>
+	</div>
+
+	<div class = "col-md-4">
+		<a class= "btn-primary btn-lg btn-block" href=http://localhost:3000/players >Players</a>
+	</div>
+</div>
+
+
+
 <table>
   <thead>
     <tr>
@@ -11,14 +29,12 @@
 
    <tbody>
 	   <tr>
-	   	   
-	   	   <% i = 0%>
-		   <% @rank.each do |key, value| %>
-		   <th><%= i+=1 %></th>
-		      <th><%= "#{@players.find(key).first_name} #{@players.find(key).last_name}" %></th>
-		      <th><%= image_tag @players.find(key).avatar.url(:thumb) %></th>
-		      <th><%= value %></th>
-		      
+	   	  
+		     <% @players.each_with_index do |p, ind| %>
+		   	  <th><%= "#{ind+1}" %></th>
+		      <td><%= "#{p.first_name} #{p.last_name}" %></td>
+		      <td><%= image_tag p.avatar.url(:thumb) %></td>
+		      <td><%= p.points_in_ranking %></td>
 	    </tr>
 	    <% end %>
     </tbody>

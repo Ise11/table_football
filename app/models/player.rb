@@ -4,6 +4,15 @@ class Player < ActiveRecord::Base
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  validates_presence_of :first_name, :last_name
+  
+
+  def statistics
+
+    [["First name", self.first_name],["Last name", self.last_name], ["Goals", self.goals], 
+    ["Points per game", self.points_per_game], ["Played", "#{self.how_many_matches} matches"], 
+    ["Won", self.won], ["Lose", self.lose]] 
+ end
 
   def goals
 
@@ -52,20 +61,14 @@ class Player < ActiveRecord::Base
   end
 
   def points_in_ranking
-    points = 0
-    today = Date.today
-    self.matches.each do |match|
-      if  ( today - 120.days < match.created_at ) &&  ( match.created_at <= today )
-        points += self.won * self.points_per_game
-      elsif ( today - 240.days < match.created_at ) && (match.created_at <= today - 120.days )
-        points += 0.5*(self.won * self.points_per_game)
-      elsif (today - 360.days < match.created_at ) && ( match.created_at <= today - 240.days ) 
-        points += 0.25*(self.won * self.points_per_game)
-      end  
-    end
-    
-    return points.round(2)
+    (self.won * self.points_per_game).round(2)
 
   end
+
+  def get_index 
+    (Player.all.sort_by { |player| -player.points_in_ranking})
+  end
+
+
   
 end

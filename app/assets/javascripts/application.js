@@ -13,4 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require bootstrap-sprockets
+
+ 
+
+$(document).ready(function() {
+    $('.btn-primary btn-lg btn-block').click(function() {
+        $(this).effect('bounce', {times:3}, 500);
+        });
+    });

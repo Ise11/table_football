@@ -24,11 +24,20 @@ class MatchesController < ApplicationController
 
   # GET /matches/1/edit
   def edit
+
+    @players = Player.all
+    @match = Match.new
+    @list = @players.map{ |p| ["#{p.last_name} #{p.first_name}" , p.id] }
   end
 
   # POST /matches
   # POST /matches.json
   def create
+
+    @players = Player.all
+    @match = Match.new
+    @list = @players.map{ |p| ["#{p.last_name} #{p.first_name}" , p.id] }
+
     @match = Match.new(match_params)
 
     respond_to do |format|
@@ -43,13 +52,9 @@ class MatchesController < ApplicationController
     end
 
 
-    player1 = Player.find_by_id(@match.winner)
-    player1.matches << @match
-    #@match.players << player1
-
-    player2 = Player.find_by_id(@match.loser)
-    player2.matches << @match
-    #@match.players << player2
+    Player.find_by_id(@match.winner).matches << @match
+    Player.find_by_id(@match.loser).matches << @match
+    
   end
 
   # PATCH/PUT /matches/1
