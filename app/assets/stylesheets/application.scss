@@ -2,6 +2,19 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$table-breakpoint: 480px;
+$table-background-color: #FFF;
+$table-text-color: #024457;
+$table-outer-border: 1px solid #2C9CC3;
+$table-cell-border: 1px solid #D9E4E6;
+
+$table-border-radius: 10px;
+$table-highlight-color: #EAF3F3;
+$table-header-background-color: #2C9CC3;
+$table-header-text-color: #FFF;
+$table-header-border: 1px solid #FFF;
+
+
 .jumbotron {
   background-image:url('http://aaainflatables.co.uk/images/table_football/table_footbal_low.jpg');
   height: 400px;
@@ -11,17 +24,19 @@
   border-color: #2C9CC3;
 
   h1 {
-
   text-align: left;
   text-indent: 0px;
   }
 }
 
+.new a{
+  
+  color:white
+}
+
 a {
   text-align: center;
-  color: white;
-  background-color: #2C9CC3;
-  border-color: black;
+  color: $table-text-color;  
 }
 
 
@@ -55,26 +70,8 @@ a {
 
 }
 
-.well .btn {
-  color: #2C9CC3;
-  text-align: center;
-  font-size: 35px;
-
-}
 
 
-
-$table-breakpoint: 480px;
-$table-background-color: #FFF;
-$table-text-color: #024457;
-$table-outer-border: 1px solid #2C9CC3;
-$table-cell-border: 1px solid #D9E4E6;
-
-$table-border-radius: 10px;
-$table-highlight-color: #EAF3F3;
-$table-header-background-color: #2C9CC3;
-$table-header-text-color: #FFF;
-$table-header-border: 1px solid #FFF;
 
 
 @mixin table(
