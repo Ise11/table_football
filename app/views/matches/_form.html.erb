@@ -1,33 +1,33 @@
 <%= form_for(@match) do |f| %>
-  <% if @match.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
+<% if @match.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
 
-      <ul>
-      <% @match.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% @match.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="field">    
-    <%= f.label :winner %><br>
-    <%= f.select :winner, @list  %>
-  </div>
-  <div class="field">
-    <%= f.label :loser %><br>
-    <%= f.select :loser, @list %>
-  </div>
-  <div class="field">
-    <%= f.label :match_date %><br>
-    <%= f.date_select :match_date %>
-  </div>
-  <div class="field">
-    <%= f.label :loser_score %><br>
-    <%= f.number_field :loser_score, :min => 0, :max => 9, :value => 0 %>
-  </div>
-  <div class="actions"> 
-    <%= f.submit %>
-  </div>
+<div class="field">    
+  <%= f.label :winner %><br>
+  <%= f.select :winner, @list  %>
+</div>
+<div class="field">
+  <%= f.label :loser %><br>
+  <%= f.select :loser, @list %>
+</div>
+<div class="field">
+  <%= f.label :match_date %><br>
+  <%= f.date_select :match_date %>
+</div>
+<div class="field">
+  <%= f.label :loser_score %><br>
+  <%= f.number_field :loser_score, :min => 0, :max => 9, :value => 0 %>
+</div>
+<div class="actions"> 
+  <%= f.submit %>
+</div>
 <% end %>

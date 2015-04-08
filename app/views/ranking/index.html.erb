@@ -1,8 +1,8 @@
 
- <div class= "row">
+<div class= "row">
 
-     <div class = "col-md-4">
-        <a class= "btn-primary btn-lg btn-block" href=http://localhost:3000/matches >Matches</a>
+	<div class = "col-md-4">
+		<a class= "btn-primary btn-lg btn-block" href=http://localhost:3000/matches >Matches</a>
 	</div>
 	<div class = "col-md-4">
 		<div class = "well">
@@ -18,25 +18,25 @@
 
 
 <table>
-  <thead>
-    <tr>
-    	<th>Rank</th>
-    	<th>Player</th>
-      	<th>Player' s avatar</th>
-      	<th>Points</th>
-    </tr>
-   </thead>
+	<thead>
+		<tr>
+			<th>Rank</th>
+			<th>Player</th>
+			<th>Player' s avatar</th>
+			<th>Points</th>
+		</tr>
+	</thead>
 
-   <tbody>
-	   <tr>
-	   	  
-		     <% @players.each_with_index do |p, ind| %>
-		   	  <th><%= "#{ind+1}" %></th>
-		      <td><%= "#{p.first_name} #{p.last_name}" %></td>
-		      <td><%= image_tag p.avatar.url(:thumb) %></td>
-		      <td><%= p.points_in_ranking %></td>
-	    </tr>
-	    <% end %>
-    </tbody>
-  </table>
+	<tbody>
+		<tr>
+			
+			<% @players.each_with_index do |p, ind| %>
+			<th><%= "#{ind+1}" %></th>
+			<td><%= p.fullname %></td>
+			<td><%= image_tag p.avatar.url(:thumb) %></td>
+			<td><%= p.points_in_ranking %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
 

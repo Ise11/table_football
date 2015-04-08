@@ -1,25 +1,21 @@
 
 
- <div class= "row">
+<div class= "row">
+ <div class = "col-md-4">
+  <a class= "btn-primary btn-lg btn-block" href=http://localhost:3000/matches >Matches</a><br>
+  <p id="notice"><%= notice %></p>
+</div>
 
-     <div class = "col-md-4">
-      <a class= "btn-primary btn-lg btn-block" href=http://localhost:3000/matches >Matches</a>
-    </div>
-  <div class = "col-md-4">
-    <div class = "well">
-      <h2>Players</h2>
-    </div>
-  </div>
-
-  <div class = "col-md-4">
-    <a class= "btn-primary btn-lg btn-block" href=http://localhost:3000/ranking >Ranking</a>
+<div class = "col-md-4">
+  <div class = "well">
+    <h2>Players</h2>
   </div>
 </div>
 
-
-<p id="notice"><%= notice %></p>
-
-
+<div class = "col-md-4">
+  <a class= "btn-primary btn-lg btn-block" href=http://localhost:3000/ranking >Ranking</a>
+</div>
+</div>
 
 <table>
   <thead>
@@ -34,18 +30,17 @@
 
   <tbody>
     <% @players.each do |player| %>
-      <tr>
-        <td><%= player.first_name %></td>
-        <td><%= player.last_name %></td>
-        <td><%= image_tag player.avatar.url(:thumb) %></td>
-        <td><%= link_to 'Show', player %></td>
-        <td><%= link_to 'Edit', edit_player_path(player) %></td>
-        <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= player.first_name %></td>
+      <td><%= player.last_name %></td>
+      <td><%= image_tag player.avatar.url(:thumb) %></td>
+      <td><%= link_to 'Show', player %></td>
+      <td><%= link_to 'Edit', edit_player_path(player) %></td>
+      <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
 
 

@@ -1,10 +1,11 @@
 
 
- <div class= "row">
+<div class= "row">
 
-     <div class = "col-md-4">
-       <a class= "btn-primary btn-lg btn-block" href=http://localhost:3000/matches >Matches</a> 
+  <div class = "col-md-4">
+    <a class= "btn-primary btn-lg btn-block" href=http://localhost:3000/matches >Matches</a> 
   </div>
+
   <div class = "col-md-4">
     <a class= "btn-primary btn-lg btn-block" href=http://localhost:3000/players >Players</a>  
   </div>
@@ -18,53 +19,53 @@
 <div class = "col-md-4">
   <%= image_tag @player.avatar.url(:medium) %> 
   <br><br>
-   <strong>Matches:</strong>
+  <strong>Matches:</strong>
   <br><br>
 </div>
 
 <div class = "col-md-8">
   <table>
-   
+
     <tbody> 
       <% @player.statistics.each do |v, k| %>
-        <tr>
-          <th><%= v %></th>
-          <td><%= k %></td>
-        </tr>
+      <tr>
+        <th><%= v %></th>
+        <td><%= k %></td>
+      </tr>
       <% end %>
     </tbody>
   </table>
 
- 
+
 </div>
 
 <table>
   <thead>
     <tr>
       <th>Winner name</th>
-    
+
       <th>Winner avatar</th>
       <th>Loser name</th>
       <th>Loser avatar</th>
       <th>Match date</th>
       <th>Winner score</th>
       <th>Loser score</th>
-    
+
     </tr>
   </thead>
 
   <tbody>
     <% @player.matches.each do |match| %>
-      <tr>
-        <td><%= " #{Player.find(match.winner).first_name}  #{Player.find(match.winner).last_name}" %></td>
-        <td><%= image_tag Player.find(match.winner).avatar.url(:thumb) %></td>
-        <td><%= "#{Player.find(match.loser).first_name} #{Player.find(match.loser).last_name}" %></td>
-        <td><%= image_tag Player.find(match.loser).avatar.url(:thumb) %></td>
-        <td><%= match.match_date %></td>
-        <td>10</td>
-        <td><%= match.loser_score %></td>
-       
-      </tr>
+    <tr>
+      <td><%= Player.find(match.winner).fullname %></td>
+      <td><%= image_tag Player.find(match.winner).avatar.url(:thumb) %></td>
+      <td><%= Player.find(match.loser).fullname %></td>
+      <td><%= image_tag Player.find(match.loser).avatar.url(:thumb) %></td>
+      <td><%= match.match_date %></td>
+      <td>10</td>
+      <td><%= match.loser_score %></td>
+
+    </tr>
     <% end %>
   </tbody>
 </table>

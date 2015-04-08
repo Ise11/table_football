@@ -2,13 +2,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$main-color:#2C9CC3;
+$border-radius: 10px;
+
 $table-breakpoint: 480px;
 $table-background-color: #FFF;
 $table-text-color: #024457;
 $table-outer-border: 1px solid #2C9CC3;
 $table-cell-border: 1px solid #D9E4E6;
 
-$table-border-radius: 10px;
+
 $table-highlight-color: #EAF3F3;
 $table-header-background-color: #2C9CC3;
 $table-header-text-color: #FFF;
@@ -16,60 +19,54 @@ $table-header-border: 1px solid #FFF;
 
 
 .jumbotron {
-  background-image:url('http://aaainflatables.co.uk/images/table_football/table_footbal_low.jpg');
-  height: 400px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius:10px;
-  border-color: #2C9CC3;
-
-  h1 {
-  text-align: left;
-  text-indent: 0px;
-  }
+background-image:url('http://aaainflatables.co.uk/images/table_football/table_footbal_low.jpg');
+height: 400px;
+background-repeat: no-repeat;
+background-size: cover;
+border-radius:$border-radius;
+border-color: $main-color;
 }
 
+
 .new a{
-  
-  color:white
+
+color:$table-header-text-color;
 }
 
 a {
-  text-align: center;
-  color: $table-text-color;  
+text-align: center;
+color: $table-text-color;  
 }
-
 
 
 .btn-primary {
-  font-size: 30px;
-  color: white;
-  background-color: #2C9CC3;
-  border-color: #2C7CC3;
-  text-align: center;
+font-size: 30px;
+color: white;
+background-color: $main-color;
+border-color: $main-color;
+text-align: center;
 }
+
 .btn-primary:hover, 
 .btn-primary:focus,
 .btn-primary:active {
-  background-color: #6BBAD5;
-  text-decoration: none;
+background-color: #6BBAD5;
+text-decoration: none;
 
 }
-
 
 .well {
-  border-radius:10px;
-    background-color: #2C9CC3;
-    float: center;
-}
+border-radius:10px;
+background-color: $main-color;
+float: center;
 
-.well h2 {
+  h2 {
   color: white;
   text-align: center;
   font-size: 35px;
 
+  }
 }
-
 
 
 
@@ -97,7 +94,7 @@ a {
   
     tr {
       border: $cell-border; 
-      &:nth-child(odd) { 
+      &:nth-child(odd) { // highlight the odd rows with a color
         background-color: $highlight-color;
       }  
     }
@@ -109,8 +106,8 @@ a {
       color: $header-text-color;
       padding: 1em;  
     }
-  
-    td {
+
+      td {
       display: block; // display the table data as one block for mobile
       word-wrap: break-word;
       max-width: 7em;
@@ -123,7 +120,7 @@ a {
         border: $cell-border;
       }
     }
-  
+    
     th, td {
       text-align: left;
       margin: .5em 1em;  
@@ -136,15 +133,12 @@ a {
 }
 
 
-
 @include table(
-  $border-radius: $table-border-radius,
+  $border-radius: $border-radius,
   $highlight-color: $table-highlight-color,
   $header-background-color: $table-header-background-color,
   $header-text-color: $table-header-text-color,
   $header-border: $table-header-border);
-
-
 
 body {
   padding: 0 2em;

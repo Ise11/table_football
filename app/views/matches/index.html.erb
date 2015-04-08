@@ -1,23 +1,20 @@
 
 
- <div class= "row">
+<div class= "row">
 
-     <div class = "col-md-4">
-        <a class= "btn-primary btn-lg btn-block" href=http://localhost:3000/players >Players</a>
-          
-      </div>
-  <div class = "col-md-4">
-    <div class = "well">
-      <h2>Matches</h2>
-    </div>
-  </div>
-
-  <div class = "col-md-4">
-    <a class= "btn-primary btn-lg btn-block" href=http://localhost:3000/ranking >Ranking</a>
+ <div class = "col-md-4">
+  <a class= "btn-primary btn-lg btn-block" href=http://localhost:3000/players >Players</a>
+  <br><p id="notice"><%= notice %></p>
 </div>
-<p id="notice"><%= notice %></p>
+<div class = "col-md-4">
+  <div class = "well">
+    <h2>Matches</h2>
+  </div>
+</div>
 
-
+<div class = "col-md-4">
+  <a class= "btn-primary btn-lg btn-block" href=http://localhost:3000/ranking >Ranking</a>
+</div>
 
 <table>
   <thead>
@@ -29,30 +26,26 @@
       <th>Match date</th>
       <th>Winner score</th>
       <th>Loser score</th>
-      <th></th>
       <th class = "new"><%= link_to 'New Match', new_match_path %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @matches.each do |match| %>
-      <tr>
-        <td><%= "#{@winner_first = Player.find(match.winner).first_name}  #{Player.find(match.winner).last_name}" %></td>
-        <td><%= image_tag Player.find(match.winner).avatar.url(:thumb) %></td>
-        <td><%= "#{Player.find(match.loser).first_name}  #{Player.find(match.loser).last_name}" %></td>
-        <td><%= image_tag Player.find(match.loser).avatar.url(:thumb) %></td>
-
-        <td><%= match.match_date %></td>
-        <td>10</td>
-        <td><%= match.loser_score %></td>
-        <td><%= link_to 'Edit', edit_match_path(match) %></td>
-        <td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        
-      </tr>
+    <tr>
+      <td><%= Player.find(match.winner).fullname %></td>
+      <td><%= image_tag Player.find(match.winner).avatar.url(:thumb) %></td>
+      <td><%= Player.find(match.loser).fullname %></td>
+      <td><%= image_tag Player.find(match.loser).avatar.url(:thumb) %></td>
+      <td><%= match.match_date %></td>
+      <td>10</td>
+      <td><%= match.loser_score %></td>
+      <td><%= link_to 'Destroy', match, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      
+    </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
 
 
