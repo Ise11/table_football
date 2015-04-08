@@ -5,26 +5,17 @@ class MatchesController < ApplicationController
     @matches = Match.all
   end
 
-  def show    
-  end
-
   def new
     @players = Player.all
     @match = Match.new
-    @list = @players.map{ |p| ["#{p.last_name} #{p.first_name}" , p.id] } 
-  end
-
-  def edit
-    @players = Player.all
-    @match = Match.new
-    @list = @players.map{ |p| ["#{p.last_name} #{p.first_name}" , p.id] }
+    @list = @players.map{ |p| [p.fullname , p.id] } 
   end
 
   def create
 
     @players = Player.all
     @match = Match.new
-    @list = @players.map{ |p| ["#{p.last_name} #{p.first_name}" , p.id] }
+    @list = @players.map{ |p| [p.fullname , p.id] }
     @match = Match.new(match_params)
 
     respond_to do |format|
